@@ -17,12 +17,14 @@ function loadProducts() {
         productDiv.classList.add('product');
         productDiv.setAttribute('data-id', product.id);
 
+        // Show product image and information
         productDiv.innerHTML = `
-            <img src="images/${product.image}" alt="${product.name}">
+            <img src="images/${product.image}" alt="${product.name}" class="product-image">
             <h3>${product.name}</h3>
             <p>Price: $${product.price}</p>
             <p>Size: ${product.size}</p>
             <p>Color: ${product.color}</p>
+            <p>Category: ${product.category}</p>
             <button class="editButton">Edit</button>
             <button class="deleteButton">Delete</button>
         `;
@@ -47,6 +49,7 @@ function openModal(mode, productId = null) {
     const productPrice = document.getElementById('productPrice');
     const productSize = document.getElementById('productSize');
     const productColor = document.getElementById('productColor');
+    const productCategory = document.getElementById('productCategory');
     const productImage = document.getElementById('productImage');
 
     if (mode === 'edit') {
@@ -56,6 +59,7 @@ function openModal(mode, productId = null) {
         productPrice.value = product.price;
         productSize.value = product.size;
         productColor.value = product.color;
+        productCategory.value = product.category;
         productImage.value = ''; // Image will be handled separately
         saveProductButton.setAttribute('data-id', productId);
     } else {
@@ -64,6 +68,7 @@ function openModal(mode, productId = null) {
         productPrice.value = '';
         productSize.value = '';
         productColor.value = '';
+        productCategory.value = '';
         productImage.value = '';
         saveProductButton.removeAttribute('data-id');
     }
@@ -82,9 +87,10 @@ saveProductButton.addEventListener('click', () => {
     const productPrice = document.getElementById('productPrice').value;
     const productSize = document.getElementById('productSize').value;
     const productColor = document.getElementById('productColor').value;
+    const productCategory = document.getElementById('productCategory').value;
     const productImage = document.getElementById('productImage').files[0];
 
-    if (!productName || !productPrice || !productSize || !productColor || !productImage) {
+    if (!productName || !productPrice || !productSize || !productColor || !productCategory || !productImage) {
         alert('Please fill all fields!');
         return;
     }
@@ -99,6 +105,7 @@ saveProductButton.addEventListener('click', () => {
             price: productPrice,
             size: productSize,
             color: productColor,
+            category: productCategory,
             image: imageName
         };
 
