@@ -4,12 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Clothing Store</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        .container { display: flex; flex-wrap: wrap; justify-content: center; }
-        .product { border: 1px solid #ddd; margin: 10px; padding: 10px; width: 200px; }
-        .cart { margin-top: 20px; padding: 10px; border: 1px solid #000; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Welcome to Our Online Clothing Store</h1>
@@ -36,31 +31,6 @@
         <p><strong>Total:</strong> $<span id="total-price">0</span></p>
         <button onclick="checkout()">Checkout</button>
     </div>
-
-    <script>
-        let cart = [];
-        function addToCart(name, price) {
-            cart.push({ name, price });
-            updateCart();
-        }
-        function updateCart() {
-            let cartList = document.getElementById("cart-items");
-            let totalPrice = document.getElementById("total-price");
-            cartList.innerHTML = "";
-            let total = 0;
-            cart.forEach(item => {
-                let li = document.createElement("li");
-                li.textContent = `${item.name} - $${item.price}`;
-                cartList.appendChild(li);
-                total += item.price;
-            });
-            totalPrice.textContent = total;
-        }
-        function checkout() {
-            alert("Thank you for your purchase!");
-            cart = [];
-            updateCart();
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
