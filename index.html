@@ -3,38 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Product Creation</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Product Page with CRUD</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Product and Category Creation</h1>
+    <div class="product-container" id="product-container"></div>
+    
+    <button id="addProductButton">Add Product</button>
 
-        <div class="form-section">
-            <h2>Create a Category</h2>
-            <input type="text" id="categoryName" placeholder="Category Name" />
-            <button onclick="addCategory()">Add Category</button>
-        </div>
-
-        <div class="form-section">
-            <h2>Create a Product</h2>
-            <input type="text" id="productName" placeholder="Product Name" />
-            <input type="number" id="productPrice" placeholder="Product Price" />
-            <input type="text" id="productSize" placeholder="Product Size" />
-            <input type="color" id="productColor" placeholder="Product Color" />
-            <input type="file" id="productImage" />
-            <select id="categorySelect">
-                <option disabled selected>Select Category</option>
-            </select>
-            <button onclick="addProduct()">Add Product</button>
-        </div>
-
-        <div class="categories">
-            <h2>Categories & Products</h2>
-            <div id="categoriesList"></div>
+    <!-- Add/Edit Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Add Product</h2>
+            <input type="text" id="productName" placeholder="Product Name">
+            <input type="number" id="productPrice" placeholder="Price">
+            <input type="text" id="productSize" placeholder="Size">
+            <input type="text" id="productColor" placeholder="Color">
+            <input type="file" id="productImage" accept="image/*">
+            <button id="saveProductButton">Save</button>
+            <button id="cancelButton">Cancel</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
