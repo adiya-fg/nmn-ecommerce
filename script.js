@@ -1,5 +1,5 @@
-let categories = [];
-let products = [];
+let categories = JSON.parse(localStorage.getItem('categories')) || [];
+let products = JSON.parse(localStorage.getItem('products')) || [];
 
 function addCategory() {
     const categoryName = document.getElementById('categoryName').value;
@@ -7,6 +7,7 @@ function addCategory() {
         categories.push(categoryName);
         updateCategorySelect();
         displayCategories();
+        localStorage.setItem('categories', JSON.stringify(categories));  // Store categories in localStorage
         document.getElementById('categoryName').value = '';
     } else {
         alert('Category name cannot be empty');
@@ -44,6 +45,7 @@ function addProduct() {
                 category: selectedCategory,
             };
             products.push(product);
+            localStorage.setItem('products', JSON.stringify(products));  // Store products in localStorage
             displayCategories();
             clearProductForm();
         };
@@ -88,3 +90,7 @@ function clearProductForm() {
     document.getElementById('productImage').value = '';
     document.getElementById('categorySelect').value = '';
 }
+
+// Initialize the page with stored categories and products
+updateCategorySelect();
+displayCategories();
